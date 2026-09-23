@@ -1,11 +1,11 @@
 <div align="center">
 
-# 📨 n8n Contact Form to Google Sheets — HTML Form + n8n Webhook (No Backend)
+# N8N Contact Form to Google Sheets — HTML Form + N8N Webhook (No Backend)
 
-**Free n8n contact form template: send HTML form submissions to Google Sheets through an n8n Webhook and get a Gmail email alert for every new lead.**
+**Free N8N contact form template: send HTML form submissions to Google Sheets through an N8N Webhook and get a Gmail email alert for every new lead.**
 No backend, no database, no PHP, no Google Apps Script. It's one `index.html` file you can host anywhere.
 
-[![n8n](https://img.shields.io/badge/n8n-Webhook-EA4B71?style=flat-square&logo=n8n&logoColor=white)](https://n8n.io)
+[![N8N](https://img.shields.io/badge/N8N-Webhook-EA4B71?style=flat-square&logo=n8n&logoColor=white)](https://n8n.io)
 [![Google Sheets](https://img.shields.io/badge/Google%20Sheets-Append%20Row-34A853?style=flat-square&logo=googlesheets&logoColor=white)](https://sheets.new)
 [![Gmail](https://img.shields.io/badge/Gmail-Alert-EA4335?style=flat-square&logo=gmail&logoColor=white)](#step-4--email-alert-optional)
 [![HTML](https://img.shields.io/badge/Single%20File-index.html-001f3f?style=flat-square&logo=html5&logoColor=white)](index.html)
@@ -16,56 +16,56 @@ No backend, no database, no PHP, no Google Apps Script. It's one `index.html` fi
 
 ---
 
-## 📑 Contents
+## Contents
 
-- [How it works](#-how-it-works)
-- [Features](#-features)
-- [Quick start (5 minutes)](#-quick-start-5-minutes)
-- [Full setup](#-full-setup)
-- [Test mode vs live mode](#-test-mode-vs-live-mode)
-- [Form fields](#-form-fields)
-- [Adding your own field](#-adding-your-own-field)
-- [Use cases](#-use-cases)
-- [Troubleshooting](#-troubleshooting)
-- [FAQ](#-faq)
-- [Let's Work Together](#-lets-work-together)
+- [How it works](#how-it-works)
+- [Features](#features)
+- [Quick start (5 minutes)](#quick-start-5-minutes)
+- [Full setup](#full-setup)
+- [Test mode vs live mode](#test-mode-vs-live-mode)
+- [Form fields](#form-fields)
+- [Adding your own field](#adding-your-own-field)
+- [Use cases](#use-cases)
+- [Troubleshooting](#troubleshooting)
+- [FAQ](#faq)
+- [Let's Work Together](#lets-work-together)
 
 ---
 
-## ⚙️ How it works
+## How it works
 
 ```mermaid
 flowchart LR
-    A["🌐 Contact form<br/>index.html"] -- "POST (form data)" --> B["⚡ n8n<br/>Webhook"]
-    B --> C["📊 Google Sheets<br/>Append Row"]
-    C --> D["📧 Gmail<br/>Alert (optional)"]
+    A["Contact form<br/>index.html"] -- "POST (form data)" --> B["N8N<br/>Webhook"]
+    B --> C["Google Sheets<br/>Append Row"]
+    C --> D["Gmail<br/>Alert (optional)"]
 ```
 
 1. A visitor fills in the form on your website and clicks **Send Message**.
-2. The form posts the data straight to your **n8n Webhook**.
-3. n8n adds it as a **new row in Google Sheets**.
-4. Optionally, n8n **emails you** the lead details.
+2. The form posts the data straight to your **N8N Webhook**.
+3. N8N adds it as a **new row in Google Sheets**.
+4. Optionally, N8N **emails you** the lead details.
 
 ---
 
-## ✨ Features
+## Features
 
 | | |
 |---|---|
-| 🧾 **9 fields** | Name, Email, Phone, Company, City, Budget, Subject, Preferred Date, Message |
-| 🚫 **No CORS setup** | Sends the data as `form-urlencoded`, so the browser skips the CORS preflight and it works with any n8n Webhook |
-| 🧪 **Test mode** | Add `?test` to the page URL to send to the n8n **Test URL** instead of the Production URL |
-| 🪄 **Demo fill** | The ⓘ icon fills the form with sample data (a new set on every click) for quick testing |
-| ⏳ **Clear feedback** | Sending overlay, a spinner on the button, and success or error popups |
-| 🛡️ **Setup guard** | Until you paste your webhook URLs, the form shows a "Webhook URL missing" message instead of failing silently |
-| 📱 **Mobile ready** | Responsive layout, 16px inputs so iOS doesn't zoom in, and it respects reduced-motion settings |
+| **9 fields** | Name, Email, Phone, Company, City, Budget, Subject, Preferred Date, Message |
+| **No CORS setup** | Sends the data as `form-urlencoded`, so the browser skips the CORS preflight and it works with any N8N Webhook |
+| **Test mode** | Add `?test` to the page URL to send to the N8N **Test URL** instead of the Production URL |
+| **Demo fill** | The info icon fills the form with sample data (a new set on every click) for quick testing |
+| **Clear feedback** | Sending overlay, a spinner on the button, and success or error popups |
+| **Setup guard** | Until you paste your webhook URLs, the form shows a "Webhook URL missing" message instead of failing silently |
+| **Mobile ready** | Responsive layout, 16px inputs so iOS doesn't zoom in, and it respects reduced-motion settings |
 
 ---
 
-## 🚀 Quick start (5 minutes)
+## Quick start (5 minutes)
 
 1. **Download** `index.html` from this repo.
-2. **Build the n8n workflow** (Webhook → Google Sheets). See [Full setup](#-full-setup).
+2. **Build the N8N workflow** (Webhook → Google Sheets). See [Full setup](#full-setup).
 3. **Paste your webhook URLs** into `index.html`:
 
    ```js
@@ -74,11 +74,11 @@ flowchart LR
    ```
 
 4. **Upload** `index.html` to any static host, such as [Netlify Drop](https://app.netlify.com/drop), GitHub Pages or Hostinger.
-5. **Publish** the workflow in n8n. Every form submission now becomes a new row in your sheet ✅
+5. **Publish** the workflow in N8N. Every form submission now becomes a new row in your sheet
 
 ---
 
-## 🛠️ Full setup
+## Full setup
 
 ### Step 1 · Google Sheet
 
@@ -90,7 +90,7 @@ Timestamp	Name	Email	Phone	Company	City	Budget	Subject	Preferred Date	Message
 
 ### Step 2 · Webhook node
 
-In n8n, click **+ Create Workflow**, then add a **Webhook** node:
+In N8N, click **+ Create Workflow**, then add a **Webhook** node:
 
 | Setting | Value |
 |---|---|
@@ -133,7 +133,7 @@ Then map the columns:
 | Message | `{{ $json.body.message }}` |
 
 > [!IMPORTANT]
-> Click **Add option → Cell Format → Use Format From n8n**. This keeps the leading `0` on phone numbers and stops Google Sheets from changing the date.
+> Click **Add option → Cell Format → Use Format From N8N**. This keeps the leading `0` on phone numbers and stops Google Sheets from changing the date.
 
 ### Step 4 · Email alert (optional)
 
@@ -165,40 +165,40 @@ Message:
 
 ### Step 5 · Go live
 
-Click **Publish** (top right). In older n8n versions, switch the workflow to **Active**. Every run is logged in the **Executions** tab.
+Click **Publish** (top right). In older N8N versions, switch the workflow to **Active**. Every run is logged in the **Executions** tab.
 
 ---
 
-## 🔀 Test mode vs live mode
+## Test mode vs live mode
 
 | Page URL | Sends to | When it works |
 |---|---|---|
-| `your-site.com/?test` | Test URL (`/webhook-test/…`) | Only while **Listen for test event** is active in the n8n editor |
+| `your-site.com/?test` | Test URL (`/webhook-test/…`) | Only while **Listen for test event** is active in the N8N editor |
 | `your-site.com` | Production URL (`/webhook/…`) | Once the workflow is **Published** |
 
 You only deploy the page once. Switch between test and live by adding or removing `?test`.
 
 ---
 
-## 📋 Form fields
+## Form fields
 
-Each field reaches n8n as `$json.body.<name>`:
+Each field reaches N8N as `$json.body.<name>`:
 
 | Field | `name` | Type | Required |
 |---|---|---|:---:|
-| Full Name | `name` | text | ✅ |
-| Email | `email` | email | ✅ |
-| Phone | `phone` | tel | ✅ |
+| Full Name | `name` | text | Yes |
+| Email | `email` | email | Yes |
+| Phone | `phone` | tel | Yes |
 | Company | `company` | text | |
 | City | `city` | text | |
 | Budget | `budget` | number | |
-| Subject | `subject` | text | ✅ |
+| Subject | `subject` | text | Yes |
 | Preferred Contact Date | `preferred_date` | date (`YYYY-MM-DD`) | |
 | Message | `message` | textarea | |
 
 ---
 
-## ➕ Adding your own field
+## Adding your own field
 
 1. Copy any `.form-group` block in `index.html` and give the input a new `name` (for example `website`).
 2. Add a matching column header in your sheet (for example `Website`).
@@ -208,57 +208,57 @@ That's all. The form sends every named input automatically.
 
 ---
 
-## 💼 Use cases
+## Use cases
 
 - **Lead capture** for agencies, freelancers and small businesses: every enquiry lands in a Google Sheet
 - **Website contact form** on a static site (Netlify, GitHub Pages, Hostinger) without a server
 - **Quote or booking requests**, with the Budget and Preferred Date fields already built in
-- **Learning n8n**: a simple first workflow (Webhook → Google Sheets → Gmail) for beginners
+- **Learning N8N**: a simple first workflow (Webhook → Google Sheets → Gmail) for beginners
 
 ---
 
-## 🩺 Troubleshooting
+## Troubleshooting
 
 | Problem | Fix |
 |---|---|
-| "Webhook URL missing" popup | Paste your n8n URLs into `N8N_TEST_URL` / `N8N_LIVE_URL` in `index.html`. |
+| "Webhook URL missing" popup | Paste your N8N URLs into `N8N_TEST_URL` / `N8N_LIVE_URL` in `index.html`. |
 | "Webhook is not registered" / 404 | With `?test`: click **Listen for test event** first. Without it: the workflow must be **Published**. |
 | Row added, but the cells are empty | Use `$json.body.name`, not `$json.name`. |
-| Phone lost its leading 0 | Set **Cell Format** to **Use Format From n8n**. |
+| Phone lost its leading 0 | Set **Cell Format** to **Use Format From N8N**. |
 | Data in the wrong columns | The headers in row 1 must exactly match [Step 1](#step-1--google-sheet). |
 | Email shows `undefined` | The first node must be named **Webhook**. If you renamed it, change `$('Webhook')` to the new name. |
 | No alert email | Check your Spam folder, make sure **To** is filled in, and check that the Gmail credential shows **Account connected**. |
 
 ---
 
-## ❓ FAQ
+## FAQ
 
-### How do I send HTML form data to Google Sheets with n8n?
-Post the form to an n8n **Webhook** node, then add a **Google Sheets → Append Row** node that maps `$json.body.<field>` to each column. This repo gives you the ready-made form, and [Full setup](#-full-setup) shows each node's settings.
+### How do I send HTML form data to Google Sheets with N8N?
+Post the form to an N8N **Webhook** node, then add a **Google Sheets → Append Row** node that maps `$json.body.<field>` to each column. This repo gives you the ready-made form, and [Full setup](#full-setup) shows each node's settings.
 
 ### Do I need a backend, PHP or Google Apps Script?
-No. The browser posts straight to n8n, and n8n writes to Google Sheets. You only host one static HTML file.
+No. The browser posts straight to N8N, and N8N writes to Google Sheets. You only host one static HTML file.
 
 ### Why doesn't the form hit a CORS error?
 It sends `application/x-www-form-urlencoded` data with a plain `POST`. That's a "simple request", so the browser skips the CORS preflight that usually blocks JSON posts to webhooks.
 
-### Does it work with self-hosted n8n?
-Yes. Use your own instance's Webhook URLs (for example `https://n8n.your-domain.com/webhook/contact-form`). It works with both n8n Cloud and self-hosted n8n.
+### Does it work with self-hosted N8N?
+Yes. Use your own instance's Webhook URLs (for example `https://n8n.your-domain.com/webhook/contact-form`). It works with both N8N Cloud and self-hosted N8N.
 
 ### Can I get an email or WhatsApp alert for every new submission?
 Yes. [Step 4](#step-4--email-alert-optional) adds a Gmail alert. You can add a WhatsApp or Slack node the same way, after the Google Sheets node.
 
 ### Is it free?
-Yes. The form is free to use, and Google Sheets and Gmail are free. n8n is free to self-host, or you can use n8n Cloud.
+Yes. The form is free to use, and Google Sheets and Gmail are free. N8N is free to self-host, or you can use N8N Cloud.
 
 ---
 
-## 📩 Let's Work Together
+## Let's Work Together
 
 Need a custom automation, dashboard or web app?
 
-- 💬 **WhatsApp:** https://whatsapp.rameezscripts.com
-- 📧 **Email:** [Contact@rameezscripts.com](mailto:Contact@rameezscripts.com)
+- **WhatsApp:** https://whatsapp.rameezscripts.com
+- **Email:** [Contact@rameezscripts.com](mailto:Contact@rameezscripts.com)
 
 <div align="center">
 

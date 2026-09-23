@@ -191,7 +191,7 @@ input, select, textarea { font-size: 16px !important; touch-action: manipulation
 </div>
 
 <script>
-// n8n workflow URLs — paste your own from the Webhook node (Test URL / Production URL)
+// N8N workflow URLs — paste your own from the Webhook node (Test URL / Production URL)
 const N8N_TEST_URL = 'PASTE_YOUR_N8N_TEST_URL_HERE';       // e.g. https://your-name.app.n8n.cloud/webhook-test/contact-form
 const N8N_LIVE_URL = 'PASTE_YOUR_N8N_PRODUCTION_URL_HERE'; // e.g. https://your-name.app.n8n.cloud/webhook/contact-form
 
@@ -261,19 +261,19 @@ form.addEventListener('submit', async e => {
   if (!form.checkValidity()) return (errBox.textContent = 'Please fill in your name, a valid email, your phone number and a subject.');
 
   if (!/^https?:\/\//.test(WEBHOOK_URL))
-    return Swal.fire({ icon: 'warning', title: 'Webhook URL missing', text: 'Open index.html and paste your n8n Webhook URLs into N8N_TEST_URL and N8N_LIVE_URL.', confirmButtonColor: '#001f3f' });
+    return Swal.fire({ icon: 'warning', title: 'Webhook URL missing', text: 'Open index.html and paste your N8N Webhook URLs into N8N_TEST_URL and N8N_LIVE_URL.', confirmButtonColor: '#001f3f' });
 
   busy(true);
   try {
     // form-urlencoded = simple request, no CORS preflight
     const res = await fetch(WEBHOOK_URL, { method: 'POST', body: new URLSearchParams(new FormData(form)) });
-    if (!res.ok) throw new Error(`n8n replied ${res.status}`);
+    if (!res.ok) throw new Error(`N8N replied ${res.status}`);
     form.reset();
     busy(false);
     Swal.fire({ icon: 'success', title: 'Message sent', text: "Thank you! We'll get back to you soon.", confirmButtonColor: '#001f3f' });
   } catch (err) {
     busy(false);
-    Swal.fire({ icon: 'error', title: 'Could not send', text: `${err.message}. ${IS_TEST ? 'Click "Listen for test event" in n8n first.' : 'Is the n8n workflow published?'}`, confirmButtonColor: '#001f3f' });
+    Swal.fire({ icon: 'error', title: 'Could not send', text: `${err.message}. ${IS_TEST ? 'Click "Listen for test event" in N8N first.' : 'Is the N8N workflow published?'}`, confirmButtonColor: '#001f3f' });
   }
 });
 </script>
