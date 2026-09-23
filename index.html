@@ -1,0 +1,279 @@
+<!--
+  Developed by Mohammad Rameez Imdad (Rameez Scripts)
+  WhatsApp: https://whatsapp.rameezscripts.com/ (For Custom Projects)
+  YouTube: https://www.youtube.com/@rameezimdad (Subscribe for more!)
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<style>
+:root { --navy-primary: #001f3f; --navy-dark: #001529; --navy-light: #003366; --navy-accent: #0074D9; --navy-hover: #002a52; --success: #34a853; --warning: #fbbc04; --danger: #ea4335; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:where(button, input, select, textarea) { font: inherit; }
+
+html { -webkit-text-size-adjust: 100%; -moz-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f5; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+
+input, select, textarea { font-size: 16px !important; touch-action: manipulation; }
+
+/* header strip */
+.about-header { display: flex; align-items: center; gap: 20px; margin-bottom: 30px; padding: 25px; background: linear-gradient(135deg, var(--navy-primary) 0%, var(--navy-light) 100%); border-radius: 4px; color: white; }
+.about-logo img { width: 80px; height: 80px; border-radius: 50%; border: 3px solid rgba(255,255,255,0.3); object-fit: cover; }
+.about-title h1 { font-size: 24px; margin-bottom: 8px; font-weight: 700; }
+.about-dev { font-size: 14px; opacity: 0.9; }
+
+/* demo fill button */
+.close-btn { background: transparent; border: none; color: white; font-size: 28px; cursor: pointer; width: 36px; height: 36px; border-radius: 6px; display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
+.close-btn:hover { background: rgba(255,255,255,0.2); }
+.close-btn:focus-visible { outline: 2px solid var(--navy-accent); outline-offset: 2px; }
+.demo-seed-btn { font-size: 19px; opacity: .7; }
+.demo-seed-btn:hover { opacity: 1; color: var(--warning); }
+.page-contact .about-header .demo-seed-btn { margin-left: auto; align-self: flex-start; }
+
+/* Buttons */
+.btn { padding: 10px 20px; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.3s; display: inline-flex; align-items: center; justify-content: center; gap: 8px; touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+.btn-primary { background: var(--navy-primary); color: white; }
+.btn-primary:hover { background: var(--navy-hover); transform: translateY(-2px); }
+.btn:disabled { background: #ccc; cursor: not-allowed; }
+.btn:focus-visible { outline: 2px solid var(--navy-accent); outline-offset: 2px; }
+.btn:disabled, .btn[disabled] { opacity: .65; cursor: not-allowed; pointer-events: none; }
+.btn .fa-spinner { margin-right: 6px; }
+
+/* Forms */
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 8px; color: #555; font-weight: 500; font-size: 14px; }
+.form-group input, .form-group select, .form-group textarea { width: 100%; padding: 14px 16px; border: 1px solid #d0d0d0; border-radius: 2px; font-size: 16px; transition: all 0.3s; font-family: inherit; }
+.form-group input:focus-visible, .form-group select:focus-visible { outline: none; border-color: var(--navy-accent); box-shadow: 0 0 0 2px rgba(0,116,217,0.1); }
+.form-actions { display: flex; gap: 10px; margin-top: 30px; }
+.error { margin-top: 15px; color: #ea4335; font-size: 14px; }
+
+/* contact page — full viewport */
+.form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.page-contact .contact-page { min-height: 100vh; width: 100%; display: flex; flex-direction: column; background: white; }
+.page-contact .about-header { margin: 0; border-radius: 0; padding: 28px 40px; }
+.page-contact .about-title h1 { display: flex; align-items: center; gap: 10px; }
+.page-contact form { flex: 1; display: flex; flex-direction: column; padding: 40px; }
+.page-contact .form-grid { grid-template-columns: repeat(3, 1fr); column-gap: 20px; row-gap: 0; }
+.page-contact .span-2 { grid-column: span 2; }
+.page-contact .form-msg { flex: 1; display: flex; flex-direction: column; margin-bottom: 0; }
+.page-contact .form-group textarea { flex: 1; resize: vertical; min-height: 180px; }
+.page-contact .form-group textarea:focus-visible { outline: none; border-color: var(--navy-accent); box-shadow: 0 0 0 2px rgba(0,116,217,0.1); }
+.page-contact .form-group label i { color: var(--navy-accent); width: 18px; }
+.page-contact .form-actions { justify-content: flex-end; }
+.page-contact .form-actions .btn { min-width: 220px; padding: 14px 24px; font-size: 16px; }
+.page-contact .req { color: var(--danger); }
+.page-contact .login-contact { margin: 0; padding: 20px 40px; background: #f8f9fa; }
+
+/* dev links */
+.developer-links { display: flex; gap: 12px; flex-wrap: wrap; }
+.dev-link { display: inline-flex; align-items: center; gap: 8px; padding: 10px 18px; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 14px; transition: all 0.3s; }
+.dev-link.whatsapp { background: #25D366; color: white; }
+.dev-link.whatsapp:hover { background: #128C7E; transform: translateY(-2px); }
+.dev-link.email { background: var(--navy-accent); color: white; }
+.dev-link.email:hover { background: var(--navy-primary); transform: translateY(-2px); }
+
+/* Let's Work Together */
+.login-contact { margin-top: 22px; padding-top: 16px; border-top: 1px solid #e2e8f0; text-align: center; }
+.login-contact p { font-size: 13px; color: #666; font-weight: 600; margin-bottom: 10px; }
+.login-contact .developer-links { justify-content: center; }
+.login-contact .dev-link { padding: 8px 14px; font-size: 13px; }
+
+/* processing overlay — writes only */
+.action-loader { position: fixed; inset: 0; z-index: 3000; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; background: rgba(0,31,63,.72); backdrop-filter: blur(3px); }
+.action-loader[hidden] { display: none; }
+.action-loader img { width: 92px; height: 92px; border-radius: 50%; border: 3px solid rgba(255,255,255,.35); object-fit: cover; box-shadow: 0 6px 24px rgba(0,0,0,.35); animation: al-pulse 1.6s ease-in-out infinite; }
+.action-loader-bar { width: min(260px, 60vw); height: 5px; border-radius: 6px; background: rgba(255,255,255,.25); overflow: hidden; }
+.action-loader-bar::after { content: ""; display: block; width: 40%; height: 100%; border-radius: 6px; background: var(--navy-accent); animation: al-slide 1.1s ease-in-out infinite; }
+.action-loader-text { color: #fff; font-size: 14px; font-weight: 600; letter-spacing: .3px; }
+@keyframes al-pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+@keyframes al-slide { 0% { transform: translateX(-100%); } 100% { transform: translateX(350%); } }
+
+@media (max-width: 768px) {
+  .page-contact .about-header { flex-direction: column; text-align: center; padding: 24px 16px; }
+  .page-contact .about-title h1 { justify-content: center; }
+  .page-contact .about-header { position: relative; }
+  .page-contact .about-header .demo-seed-btn { position: absolute; top: 12px; right: 12px; }
+  .page-contact form { padding: 24px 16px; }
+  .page-contact .form-grid { grid-template-columns: 1fr; gap: 0; }
+  .page-contact .span-2 { grid-column: auto; }
+  .page-contact .form-actions .btn { flex: 1; }
+  .page-contact .login-contact { padding: 18px 16px; }
+  .form-group input, .form-group select, .form-group textarea { font-size: 16px !important; padding: 12px 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+  .action-loader img { animation: none; }
+}
+</style>
+</head>
+<body class="page-contact">
+
+<div class="contact-page">
+  <header class="about-header">
+    <div class="about-logo"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiGXxCe0WNNedmFqSWeF761f7Kshhc-NP5ChRQKz9fr97cO8VaarvD0KlCwqHojJVBWv-RAxfOqMI5rD4H78KnARyOc6QgwL1nRRFWf5xNQ1d9F9HfAoLPPGlTyP0GwNl4n-INMEsWLQ4Y7zJtz5bOdAnc2ePH9-uCRgshlo6BsS6gJEz6fhrxL-5U5O3sX/s160/channels4_profile.jpg" alt="Logo"></div>
+    <div class="about-title">
+      <h1><i class="fa-solid fa-paper-plane"></i> Contact Us</h1>
+      <p class="about-dev">Fill in the form and we'll get back to you soon.</p>
+    </div>
+    <button type="button" class="close-btn demo-seed-btn" id="demoBtn" title="Fill this form with demo data (testing)" aria-label="Fill with demo data"><i class="fa-solid fa-circle-info"></i></button>
+  </header>
+
+  <form id="contactForm" novalidate>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="name"><i class="fa-solid fa-user"></i> Full Name <span class="req">*</span></label>
+        <input id="name" name="name" type="text" placeholder="Client 1" autocomplete="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email"><i class="fa-solid fa-envelope"></i> Email <span class="req">*</span></label>
+        <input id="email" name="email" type="email" placeholder="client1@demo.com" autocomplete="email" required>
+      </div>
+      <div class="form-group">
+        <label for="phone"><i class="fa-solid fa-phone"></i> Phone Number <span class="req">*</span></label>
+        <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="03001000001" autocomplete="tel" required>
+      </div>
+    </div>
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="company"><i class="fa-solid fa-building"></i> Company</label>
+        <input id="company" name="company" type="text" placeholder="Company 1" autocomplete="organization">
+      </div>
+      <div class="form-group">
+        <label for="city"><i class="fa-solid fa-location-dot"></i> City</label>
+        <input id="city" name="city" type="text" placeholder="Demo City" autocomplete="address-level2">
+      </div>
+      <div class="form-group">
+        <label for="budget"><i class="fa-solid fa-wallet"></i> Budget (Rs.)</label>
+        <input id="budget" name="budget" type="number" min="0" step="500" inputmode="numeric" placeholder="5000">
+      </div>
+      <div class="form-group span-2">
+        <label for="subject"><i class="fa-solid fa-tag"></i> Subject <span class="req">*</span></label>
+        <input id="subject" name="subject" type="text" placeholder="Need a custom dashboard" required>
+      </div>
+      <div class="form-group">
+        <label for="preferred_date"><i class="fa-solid fa-calendar-day"></i> Preferred Contact Date</label>
+        <input id="preferred_date" name="preferred_date" type="date">
+      </div>
+    </div>
+    <div class="form-group form-msg">
+      <label for="message"><i class="fa-solid fa-comment-dots"></i> Message</label>
+      <textarea id="message" name="message" placeholder="How can we help you?"></textarea>
+    </div>
+
+    <div id="formError" class="error" role="alert"></div>
+
+    <div class="form-actions">
+      <button id="sendBtn" class="btn btn-primary" type="submit"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
+    </div>
+  </form>
+
+  <div class="login-contact">
+    <p><i class="fa-solid fa-handshake"></i> Let's Work Together</p>
+    <div class="developer-links">
+      <a class="dev-link whatsapp" href="https://whatsapp.rameezscripts.com" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+      <a class="dev-link email" href="mailto:Contact@rameezscripts.com"><i class="fa-solid fa-envelope"></i> Email</a>
+    </div>
+  </div>
+</div>
+
+<div id="actionLoader" class="action-loader" role="status" aria-live="polite" hidden>
+  <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiGXxCe0WNNedmFqSWeF761f7Kshhc-NP5ChRQKz9fr97cO8VaarvD0KlCwqHojJVBWv-RAxfOqMI5rD4H78KnARyOc6QgwL1nRRFWf5xNQ1d9F9HfAoLPPGlTyP0GwNl4n-INMEsWLQ4Y7zJtz5bOdAnc2ePH9-uCRgshlo6BsS6gJEz6fhrxL-5U5O3sX/s160/channels4_profile.jpg" alt="">
+  <div class="action-loader-bar"></div>
+  <span class="action-loader-text">Sending…</span>
+</div>
+
+<script>
+// n8n workflow URLs — paste your own from the Webhook node (Test URL / Production URL)
+const N8N_TEST_URL = 'PASTE_YOUR_N8N_TEST_URL_HERE';       // e.g. https://your-name.app.n8n.cloud/webhook-test/contact-form
+const N8N_LIVE_URL = 'PASTE_YOUR_N8N_PRODUCTION_URL_HERE'; // e.g. https://your-name.app.n8n.cloud/webhook/contact-form
+
+// ?test in the page URL = Test URL (editor must be listening)
+const IS_TEST = new URLSearchParams(location.search).has('test');
+const WEBHOOK_URL = IS_TEST ? N8N_TEST_URL : N8N_LIVE_URL;
+
+// demo fill — each click = set #N, one higher than the last
+function demoSeq(key) {
+  const k = 'rsDemoSeq_' + key;
+  let n = 1;
+  try { n = parseInt(localStorage.getItem(k) || '0', 10) + 1; localStorage.setItem(k, n); } catch {}
+  return n;
+}
+const demoDate = off => { const d = new Date(); d.setDate(d.getDate() + off);
+  return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); };
+
+function demoValue(name, type, n, entity, label) {
+  name = (name || '').toLowerCase(); label = label || 'Demo';
+  if (type === 'email' || /email/.test(name))        return 'demo' + n + '@demo.com';
+  if (type === 'tel' || /phone|mobile|whatsapp/.test(name)) return '0300' + (1000000 + n);
+  if (type === 'date') {
+    if (/dob|birth/.test(name))                      return demoDate(-(9000 + n * 30));
+    if (/expiry|next|due|end|preferred|appointment|schedul/.test(name)) return demoDate(1 + (n % 21));
+    return demoDate(-(n % 14));
+  }
+  if (type === 'number' || /amount|fee|price|salary|cost|budget/.test(name)) return String((n % 20 + 1) * 500);
+  if (/address/.test(name))                          return 'House ' + n + ', Street ' + ((n % 9) + 1) + ', Demo City';
+  if (/city/.test(name))                             return 'Demo City';
+  if (/company/.test(name))                          return 'Company ' + n;
+  if (/full_name|^name$|username/.test(name))        return (entity || 'Demo') + ' ' + n;
+  if (/description|notes|remark|content|summary|message/.test(name))
+    return 'Demo ' + label.toLowerCase() + ' ' + n + ' — sample text for testing.';
+  return label + ' ' + n;
+}
+
+function seedForm(form, key, entity) {
+  const n = demoSeq(key);
+  form.querySelectorAll('input, select, textarea').forEach(el => {
+    const type = (el.type || '').toLowerCase();
+    if (el.disabled || el.readOnly || ['hidden', 'file', 'submit', 'button', 'reset'].includes(type)) return;
+    const lab = el.closest('.form-group')?.querySelector('label');
+    el.value = demoValue(el.name || el.id, type, n, entity, lab ? lab.textContent.replace(/\*/g, '').trim() : '');
+    el.dispatchEvent(new Event('input', { bubbles: true }));
+    el.dispatchEvent(new Event('change', { bubbles: true }));
+  });
+  if (typeof Swal !== 'undefined')
+    Swal.fire({ toast: true, position: 'top-end', icon: 'info', title: 'Demo set #' + n, timer: 1500, showConfirmButton: false });
+}
+
+const form = document.getElementById('contactForm');
+const btn = document.getElementById('sendBtn');
+const errBox = document.getElementById('formError');
+const loader = document.getElementById('actionLoader');
+document.getElementById('demoBtn').addEventListener('click', () => seedForm(form, 'contact', 'Client'));
+
+// overlay + button spinner together
+const busy = on => {
+  loader.hidden = !on;
+  btn.disabled = on;
+  btn.innerHTML = on ? '<i class="fa-solid fa-spinner fa-spin"></i> Sending…' : '<i class="fa-solid fa-paper-plane"></i> Send Message';
+};
+
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  errBox.textContent = '';
+  if (!form.checkValidity()) return (errBox.textContent = 'Please fill in your name, a valid email, your phone number and a subject.');
+
+  if (!/^https?:\/\//.test(WEBHOOK_URL))
+    return Swal.fire({ icon: 'warning', title: 'Webhook URL missing', text: 'Open index.html and paste your n8n Webhook URLs into N8N_TEST_URL and N8N_LIVE_URL.', confirmButtonColor: '#001f3f' });
+
+  busy(true);
+  try {
+    // form-urlencoded = simple request, no CORS preflight
+    const res = await fetch(WEBHOOK_URL, { method: 'POST', body: new URLSearchParams(new FormData(form)) });
+    if (!res.ok) throw new Error(`n8n replied ${res.status}`);
+    form.reset();
+    busy(false);
+    Swal.fire({ icon: 'success', title: 'Message sent', text: "Thank you! We'll get back to you soon.", confirmButtonColor: '#001f3f' });
+  } catch (err) {
+    busy(false);
+    Swal.fire({ icon: 'error', title: 'Could not send', text: `${err.message}. ${IS_TEST ? 'Click "Listen for test event" in n8n first.' : 'Is the n8n workflow published?'}`, confirmButtonColor: '#001f3f' });
+  }
+});
+</script>
+</body>
+</html>
